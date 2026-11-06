@@ -72,7 +72,7 @@ body{font-size:11pt}
 .rpt .ph figure{margin:0}.rpt .ph img{width:100%;object-fit:cover;border:1px solid #cfd8e2;display:block}
 .rpt .ph.n1 img{height:70mm}.rpt .ph.n2 img{height:54mm}.rpt .ph.n3 img{height:42mm}
 .rpt .ph figcaption{font-size:9.5px;text-align:center;color:#66768a;margin-top:2px}
-.rpt .sigs.two{grid-template-columns:1fr 1fr;gap:28px}
+.rpt .sigs.two{grid-template-columns:1fr 1fr;gap:28px;align-items:start}
 .rpt .oprpage .lgrow{margin-bottom:6px}.rpt .oprpage .lg{max-height:15mm}
 .rpt .oprpage .lh{padding-bottom:8px;margin-bottom:4px}.rpt .oprpage h1{font-size:17px;margin:3px 0 0}
 .rpt .oprpage h3.sec{margin:11px 0 6px;font-size:13px}
@@ -91,6 +91,72 @@ body{font-size:11pt}
 .rpt .oprpage .sig .sl{height:10mm;margin-bottom:4px}.rpt .oprpage .sigwrap{margin-top:6px}
 @media print{.rpt .oprpage{font-size:9.5pt}.rpt .oprpage table{font-size:9pt}.rpt .oprpage .sumr{font-size:9.5pt}}
 .toolbar select{width:auto;min-width:150px;max-width:260px}
+/* ===== UI: menu, panel sisi, dashboard, pratonton ===== */
+nav{padding:12px 10px}
+nav .ng{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b99ab;font-weight:700;margin:16px 10px 4px}
+nav .ng:first-child{margin-top:2px}
+nav button{display:flex;align-items:center;gap:10px;padding:9px 12px}
+.ic{width:18px;height:18px;flex:none}
+@media(min-width:801px){nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto}}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+button.addbtn{background:var(--t);padding:10px 16px;font-size:14px;box-shadow:0 2px 6px rgba(22,139,135,.3)}
+button.addbtn:hover{filter:brightness(1.08)}
+/* panel sisi */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(660px,100%);margin:0!important;border-radius:0!important;border:0!important;overflow:auto;z-index:60;padding:0 22px 6px!important;transform:translateX(105%);visibility:hidden;transition:transform .22s ease,visibility .22s;box-shadow:-12px 0 32px rgba(15,27,43,.25);background:#fff}
+.drawer.open{transform:none;visibility:visible}
+.dhead{position:sticky;top:0;background:#fff;display:flex;justify-content:space-between;align-items:center;padding:16px 0 12px;border-bottom:1px solid var(--line);margin-bottom:16px;z-index:3}
+.dhead h3{margin:0;font-size:17px}
+.dfoot{position:sticky;bottom:0;background:#fff;padding:12px 0!important;margin:14px 0 0!important;border-top:1px solid var(--line);z-index:3}
+#ovl,#ovl2{position:fixed;inset:0;background:rgba(15,27,43,.45);z-index:55;display:none}
+#ovl.open,#ovl2.open{display:block}
+body.nos{overflow:hidden}
+/* notifikasi */
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);background:#172b45;color:#fff;padding:10px 20px;border-radius:24px;opacity:0;pointer-events:none;transition:.2s;z-index:95;font-weight:bold;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+/* dashboard */
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.quick button{background:#fff;color:var(--b);border:1px solid #c9d8e5;padding:9px 14px}
+.quick button:hover{background:#eaf2f8}
+.dash2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:15px 0}
+.dash2 .panel{margin:0}
+.todo{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #eef2f6}
+.todo:last-child{border-bottom:0}
+.todo .t{flex:1}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;background:#c5ceda}
+.dot.bad{background:#c0392b}.dot.warn{background:#e0a21b}.dot.ok{background:#2e9e68}
+.ringwrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.mini{display:flex;align-items:flex-end;gap:12px;padding-top:6px}
+.mini .mb{flex:1;max-width:64px;display:flex;flex-direction:column;align-items:center}
+.mini .mb b{font-size:11px;color:#34465a;margin-bottom:3px}
+.mini .bw{height:90px;width:100%;display:flex;align-items:flex-end}
+.mini .bw i{display:block;width:100%;background:linear-gradient(var(--b),var(--t));border-radius:6px 6px 0 0}
+.mini .mb span{font-size:11px;color:#718094;margin-top:4px}
+/* pratonton cetakan */
+#pv{position:fixed;inset:0;z-index:80;background:#677689;display:flex;flex-direction:column}
+.pvbar{background:#fff;padding:10px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line)}
+.pvwarn{color:#b23b3b;font-weight:bold;font-size:12px}
+.pvhint{font-size:12px;max-width:300px}
+#pvbody{flex:1;overflow:auto;padding:18px}
+#pvpaper.preview.rpt{background:#fff;margin:0 auto;box-shadow:0 8px 30px rgba(0,0,0,.4);border:0;max-width:none;width:210mm;padding:14mm 14mm 19mm;border-radius:0}
+#pvpaper.land{width:297mm}
+/* telefon */
+#tabbar{display:none}
+@media(max-width:800px){
+header{padding:12px 14px}header h1{font-size:17px}header p{display:none}header>.no-print{display:none}
+nav{display:none}
+nav.open{display:block;position:fixed;left:0;right:0;bottom:60px;max-height:70vh;overflow:auto;z-index:58;border:0;border-radius:16px 16px 0 0;box-shadow:0 -12px 30px rgba(15,27,43,.3);padding:14px}
+nav.open button{width:100%;white-space:normal}
+#tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;height:60px;background:#fff;border-top:1px solid var(--line);z-index:57}
+#tabbar button{flex:1;background:none;color:#5d6e82;border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;padding:4px}
+#tabbar button.active{color:var(--b);background:#eaf2f8}
+main{padding-bottom:84px}
+footer{padding-bottom:70px}
+#toast{bottom:76px}
+.dash2{grid-template-columns:1fr}
+.drawer{padding:0 14px 6px!important}
+.pvhint{display:none}
+}
+@media print{.pagehead,#tabbar,#ovl,#ovl2,#toast,#pv,.drawer{display:none!important}body.nos{overflow:visible!important}}
 </style>
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#17365d">
@@ -101,8 +167,8 @@ body{font-size:11pt}
 
 </head><body>
 <header><div><h1>e-Portfolio Profesionalisme Guru</h1><p>Dokumentasi, evidens dan analisis pembangunan profesional</p></div><div class="no-print"><button class="secondary" onclick="backup()">Sandaran JSON</button> <button class="secondary" onclick="document.querySelector('#restore').click()">Pulih Sandaran</button><input id="restore" type="file" accept=".json" hidden onchange="restore(this)"></div></header>
-<div class="app"><nav class="no-print" id="nav"><button class="active" data-p="dashboard">Dashboard</button><button data-p="profil">Profil Guru</button><button data-p="rekod">Rekod Profesional</button><button data-p="evidens">Bank Evidens</button><button data-p="analisis">Analisis Tahunan</button><button data-p="laporan">Laporan Profesional</button><button data-p="lnpt">Markah LNPT</button><button data-p="tugas">Penglibatan Guru</button><button data-p="surat">Surat-Menyurat</button><button data-p="sijil">Sijil</button><button data-p="opr">OPR</button><button data-p="sandaran">Sandaran & Data</button></nav><main>
-<section id="dashboard" class="page"><h2>Dashboard</h2><p class="sub">Gambaran keseluruhan portfolio profesional.</p><div class="grid" id="stats"></div><div class="panel"><h3>Ringkasan kategori</h3><select id="dy" onchange="dashboard()"></select><div id="cats"></div></div><div class="panel"><h3>Aktiviti terkini</h3><div id="recent"></div><h3>Kelengkapan portfolio</h3><div id="complete"></div></div></section>
+<div class="app"><nav class="no-print" id="nav"><div class="ng">Utama</div><button class="active" data-p="dashboard">Dashboard</button><button data-p="profil">Profil Guru</button><div class="ng">Rekod & Bukti</div><button data-p="rekod">Rekod Profesional</button><button data-p="opr">OPR</button><button data-p="sijil">Sijil</button><button data-p="tugas">Penglibatan Guru</button><button data-p="evidens">Bank Evidens</button><div class="ng">Pengurusan</div><button data-p="surat">Surat-Menyurat</button><button data-p="lnpt">Markah LNPT</button><div class="ng">Laporan & Data</div><button data-p="analisis">Analisis Tahunan</button><button data-p="laporan">Laporan Profesional</button><button data-p="sandaran">Sandaran & Data</button></nav><main>
+<section id="dashboard" class="page"><div class="pagehead"><div><h2 id="dgreet">Dashboard</h2><p class="sub">Gambaran keseluruhan portfolio profesional.</p></div></div><div class="quick no-print" id="quick"></div><div class="grid" id="stats"></div><div class="dash2"><div class="panel"><h3>Perlu tindakan</h3><div id="todo"></div></div><div class="panel"><h3>Jam CPD</h3><div id="cpdring"></div></div></div><div class="dash2"><div class="panel"><h3>Ringkasan kategori</h3><select id="dy" onchange="dashboard();dashExtra()"></select><div id="cats"></div></div><div class="panel"><h3>Trend markah LNPT</h3><div id="lnptMini"></div></div></div><div class="panel"><h3>Aktiviti terkini</h3><div id="recent"></div><h3>Kelengkapan portfolio</h3><div id="complete"></div></div></section>
 <section id="profil" class="page hidden"><h2>Profil Guru</h2><p class="sub">Maklumat untuk laporan profesional.</p><div class="panel"><form id="pf"><div class="formgrid"><div><label>Nama penuh</label><input name="nama" required></div><div><label>ID Guru / No. Pekerja</label><input name="id"></div><div><label>Jawatan</label><input name="jawatan"></div><div><label>Gred</label><input name="gred"></div><div><label>Opsyen / Subjek</label><input name="opsyen"></div><div><label>Sekolah</label><input name="sekolah"></div><div><label>Tarikh lantikan</label><input type="date" name="lantikan"></div><div><label>Kelayakan akademik</label><input name="kelayakan"></div><div><label>E-mel</label><input name="email" type="email"></div><div><label>Telefon</label><input name="telefon"></div><div class="full"><label>Gambar profil (maksimum 1.5 MB)</label><input type="file" id="photo" accept="image/*"><img id="photoView" class="profilepic"></div></div><p><button>Simpan Profil</button> <span id="pmsg" class="muted"></span></p></form></div></section>
 <section id="rekod" class="page hidden"><h2>Rekod Profesional</h2><p class="sub">Tambah, edit dan padam aktiviti profesional.</p><div class="panel"><form id="rf"><input type="hidden" name="id"><div class="formgrid"><div><label>Kategori</label><select name="kategori"><option>CPD / LDP</option><option>PdP & Kurikulum</option><option>Pengurusan Murid</option><option>Kokurikulum</option><option>Sumbangan & Pencapaian</option><option>Refleksi Profesional</option></select></div><div><label>Tajuk aktiviti / program</label><input name="tajuk" required></div><div><label>Tarikh</label><input type="date" name="tarikh" required></div><div><label>Penganjur / Unit</label><input name="penganjur"></div><div><label>Tempat</label><input name="tempat"></div><div><label>Jam CPD</label><input type="number" name="jam" min="0" step=".5" value="0"></div><div><label>Peringkat / Tahap</label><input name="peringkat"></div><div><label>Peranan / Kelas / Subjek</label><input name="peranan"></div><div class="full"><label>Impak / Hasil / Pembelajaran</label><textarea name="impak"></textarea></div><div class="full"><label>Tindakan susulan / Catatan / Refleksi</label><textarea name="catatan"></textarea></div><div class="full"><label>Pautan evidens (pilihan)</label><input name="pautan" placeholder="https://..."></div><div class="full"><label>Lampiran evidens (maksimum 8 MB setiap fail)</label><input id="uploads" type="file" multiple accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt"></div></div><p><button>Simpan Rekod</button> <button type="button" class="secondary" onclick="resetForm()">Kosongkan</button> <span id="rmsg" class="muted"></span></p></form></div><div class="panel"><div class="toolbar"><input id="search" placeholder="Cari rekod..." oninput="records()"><select id="ry" onchange="records()"></select><select id="rc" onchange="records()"><option value="">Semua kategori</option></select><button class="secondary" onclick="csv()">Eksport CSV</button></div><div id="recordList"></div></div></section>
 <section id="evidens" class="page hidden"><h2>Bank Evidens</h2><p class="sub">Fail yang dimuat naik bersama rekod.</p><div class="notice">Lampiran disimpan dalam IndexedDB pada pelayar/peranti ini. Had 8 MB setiap fail. Sertakan fail evidens dalam sandaran JSON.</div><div class="panel"><input id="esearch" placeholder="Cari fail atau rekod..." oninput="evidence()"><div id="efilelist"></div></div></section>
@@ -136,10 +202,13 @@ body{font-size:11pt}
 
 <section id="sandaran" class="page hidden"><h2>Sandaran & Data</h2><p class="sub">Pengurusan keselamatan data setempat.</p><div class="notice">Aplikasi ini local-first: tiada data dihantar ke pelayan dan tiada penyegerakan automatik antara peranti. Data boleh hilang jika data pelayar dipadam atau peranti rosak. Buat sandaran berkala.</div><div class="panel"><h3>Logo Laporan</h3><p class="muted">Muat naik logo KPM dan logo sekolah anda. Logo dipaparkan pada kepala surat Laporan Profesional, disimpan pada peranti ini dan disertakan dalam sandaran JSON. Format PNG, JPG atau SVG; PNG berlatar telus paling sesuai.</p><div class="formgrid"><div><label>Logo KPM (kiri atas laporan)</label><div class="logobox" id="lbkpm"></div><input type="file" id="lgkpm" accept="image/*" onchange="setLogo('kpm',this)"><p><button type="button" class="small danger" onclick="clearLogo('kpm')">Buang logo KPM</button></p></div><div><label>Logo sekolah (kanan atas laporan)</label><div class="logobox" id="lbschool"></div><input type="file" id="lgschool" accept="image/*" onchange="setLogo('school',this)"><p><button type="button" class="small danger" onclick="clearLogo('school')">Buang logo sekolah</button></p></div></div></div><div class="panel"><h3>Sandaran penuh</h3><p>Termasuk profil, semua rekod dan lampiran (base64).</p><button onclick="backup()">Muat Turun Sandaran JSON</button></div><div class="panel"><h3>Pulihkan sandaran</h3><p>Pilih cara pemulihan:</p><select id="mode"><option value="merge">Gabungkan rekod</option><option value="replace">Gantikan semua data</option></select> <button class="secondary" onclick="document.querySelector('#restore').click()">Pilih fail JSON</button></div><div class="panel"><h3>Eksport data</h3><button class="secondary" onclick="csv()">Eksport senarai rekod CSV</button><div id="storage"></div></div></section>
 </main></div><footer>e-Portfolio Profesionalisme Guru · Local-first · Data disimpan pada peranti ini</footer>
+<div id="tabbar" class="no-print"><button data-go="dashboard" class="active">Utama</button><button data-go="rekod">Rekod</button><button data-go="opr">OPR</button><button data-go="surat">Surat</button><button id="moreBtn">Lagi</button></div>
+<div id="ovl" class="no-print" onclick="closeDrawer()"></div><div id="ovl2" class="no-print" onclick="closeSheet()"></div><div id="toast" class="no-print"></div>
+<div id="pv" class="no-print hidden"><div class="pvbar"><div><b>Pratonton cetakan</b> <span id="pvinfo" class="muted"></span><div id="pvwarn" class="pvwarn"></div></div><div class="row"><span class="muted pvhint">Dalam dialog cetak: pilih "Save as PDF" dan matikan "Headers and footers".</span><button class="secondary" onclick="pvClose()">Tutup</button><button onclick="pvPrint()">Cetak / Simpan PDF</button></div></div><div id="pvbody"><div id="pvpaper" class="preview rpt"></div></div></div>
 <script>
 const KEY='epg_local_v4',DB='epg_evidence_db_v2',STORE='files',CATS=['CPD / LDP','PdP & Kurikulum','Pengurusan Murid','Kokurikulum','Sumbangan & Pencapaian','Refleksi Profesional'];let data={profile:{},records:[]},db,photoData='';
 const $=x=>document.getElementById(x),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),date=d=>d?new Date(d+'T00:00:00').toLocaleDateString('ms-MY'):'—',yr=d=>(d||'').slice(0,4),uid=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
-function load(){try{data=JSON.parse(localStorage.getItem(KEY))||data}catch{}data.profile||={};data.records||=[]}function save(){localStorage.setItem(KEY,JSON.stringify(data));refresh()}
+function load(){try{data=JSON.parse(localStorage.getItem(KEY))||data}catch{}data.profile||={};data.records||=[]}function save(m){localStorage.setItem(KEY,JSON.stringify(data));refresh();closeDrawer(true);toast(typeof m==='string'?m:'Disimpan')}
 function openDB(){return new Promise((ok,no)=>{let q=indexedDB.open(DB,1);q.onupgradeneeded=()=>q.result.createObjectStore(STORE,{keyPath:'id'});q.onsuccess=()=>{db=q.result;ok()};q.onerror=()=>no(q.error)})}
 function allFiles(){return new Promise((ok,no)=>{let q=db.transaction(STORE).objectStore(STORE).getAll();q.onsuccess=()=>ok(q.result);q.onerror=()=>no(q.error)})}
 function getFile(id){return new Promise(ok=>{let q=db.transaction(STORE).objectStore(STORE).get(id);q.onsuccess=()=>ok(q.result)})}
@@ -148,15 +217,15 @@ function delFile(id){return new Promise(ok=>{let t=db.transaction(STORE,'readwri
 function dataURL(f){return new Promise((ok,no)=>{let r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;r.readAsDataURL(f)})}
 function years(){let a=[...new Set(data.records.map(r=>yr(r.tarikh)).filter(Boolean))].sort().reverse(),n=''+new Date().getFullYear();if(!a.includes(n))a.unshift(n);return a}
 function selects(){let ys=years();[['dy',true],['ry',false],['ay',false],['ly',false]].forEach(([id,all])=>{let e=$(id),old=e.value;e.innerHTML=(all?'<option value="all">Semua tahun</option>':'')+ys.map(y=>`<option>${y}</option>`).join('');if([...e.options].some(o=>o.value===old))e.value=old})}
-function refresh(){selects();dashboard();records();evidence();analysis();report();storage();logoPanel();renderNew()}
+function refresh(){selects();dashboard();dashExtra();records();evidence();analysis();report();storage();logoPanel();renderNew()}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.page').forEach(s=>s.classList.toggle('hidden',s.id!==b.dataset.p));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));refresh()});
 $('pf').onsubmit=e=>{e.preventDefault();let p=Object.fromEntries(new FormData(e.target));if(photoData)p.photo=photoData;data.profile=p;save();$('pmsg').textContent='Profil disimpan.'};
 $('photo').onchange=async e=>{let f=e.target.files[0];if(!f)return;if(f.size>1.5*1024*1024)return alert('Gambar melebihi 1.5 MB');photoData=await dataURL(f);$('photoView').src=photoData};
 function profileLoad(){let f=$('pf');Object.entries(data.profile).forEach(([k,v])=>{if(f.elements[k])f.elements[k].value=v});photoData=data.profile.photo||'';$('photoView').src=photoData}
 function resetForm(){$('rf').reset();$('rf').elements.id.value='';$('rf').elements.jam.value=0}
 $('rf').onsubmit=async e=>{e.preventDefault();let f=e.target,o=Object.fromEntries(new FormData(f)),id=o.id||uid(),r=data.records.find(x=>x.id===id)||{};Object.assign(r,o,{id,jam:+o.jam||0,updated:new Date().toISOString()});r.files||=[];for(let file of $('uploads').files){if(file.size>8*1024*1024){alert(file.name+' melebihi 8 MB');continue}let fid=uid();await putFile({id:fid,recordId:id,name:file.name,type:file.type,size:file.size,data:await dataURL(file),added:new Date().toISOString()});r.files.push(fid)}if(!data.records.some(x=>x.id===id))data.records.push(r);save();resetForm();$('rmsg').textContent='Rekod disimpan.'};
-function edit(id){let r=data.records.find(x=>x.id===id);Object.entries(r).forEach(([k,v])=>{if($('rf').elements[k]&&typeof v!=='object')$('rf').elements[k].value=v});$('rf').elements.id.value=id;window.scrollTo(0,0)}
-async function removeRecord(id){if(!confirm('Padam rekod dan lampirannya?'))return;let r=data.records.find(x=>x.id===id);for(let f of r.files||[])await delFile(f);data.records=data.records.filter(x=>x.id!==id);save()}
+function edit(id){let r=data.records.find(x=>x.id===id);Object.entries(r).forEach(([k,v])=>{if($('rf').elements[k]&&typeof v!=='object')$('rf').elements[k].value=v});$('rf').elements.id.value=id;openDrawer('rf','Edit Rekod')}
+async function removeRecord(id){if(!confirm('Padam rekod dan lampirannya?'))return;let r=data.records.find(x=>x.id===id);for(let f of r.files||[])await delFile(f);data.records=data.records.filter(x=>x.id!==id);save('Rekod dipadam')}
 function records(){if(!$('recordList'))return;let q=$('search').value.toLowerCase(),y=$('ry').value,c=$('rc').value;if($('rc').options.length===1)CATS.forEach(x=>$('rc').add(new Option(x,x)));let a=data.records.filter(r=>(!y||yr(r.tarikh)===y)&&(!c||r.kategori===c)&&(r.tajuk+' '+r.kategori+' '+r.penganjur).toLowerCase().includes(q)).sort((a,b)=>(b.tarikh||'').localeCompare(a.tarikh||''));$('recordList').innerHTML=a.length?`<div class="tablewrap"><table><tr><th>Tarikh</th><th>Kategori / Tajuk</th><th>Penganjur</th><th>Jam</th><th>Fail</th><th>Tindakan</th></tr>${a.map(r=>`<tr><td>${date(r.tarikh)}</td><td><b>${esc(r.kategori)}</b><br>${esc(r.tajuk)}</td><td>${esc(r.penganjur)}</td><td>${r.jam||0}</td><td>${(r.files||[]).length}</td><td><button class="small secondary" onclick="edit('${r.id}')">Edit</button> <button class="small danger" onclick="removeRecord('${r.id}')">Padam</button></td></tr>`).join('')}</table></div>`:'<p class="muted">Tiada rekod.</p>'}
 async function evidence(){if(!$('efilelist'))return;let fs=await allFiles(),q=$('esearch').value.toLowerCase();fs=fs.filter(f=>!f.kind&&(f.name+' '+(data.records.find(r=>r.id===f.recordId)?.tajuk||'')).toLowerCase().includes(q));$('efilelist').innerHTML=fs.length?`<div class="tablewrap"><table><tr><th>Nama fail</th><th>Rekod</th><th>Saiz</th><th>Tindakan</th></tr>${fs.map(f=>`<tr><td>${esc(f.name)}</td><td>${esc(data.records.find(r=>r.id===f.recordId)?.tajuk||'—')}</td><td>${(f.size/1024).toFixed(0)} KB</td><td><button class="small" onclick="downloadFile('${f.id}')">Muat turun</button> <button class="small danger" onclick="removeFile('${f.id}')">Padam</button></td></tr>`).join('')}</table></div>`:'<p class="muted">Tiada evidens.</p>'}
 async function downloadFile(id){let f=await getFile(id);if(f){let a=document.createElement('a');a.href=f.data;a.download=f.name;a.click()}}
@@ -195,13 +264,13 @@ function yearsOf(col,fn){return [...new Set(data[col].map(fn).filter(Boolean))].
 function fillForm(f,o){[...f.elements].forEach(e=>{if(e.name&&o[e.name]!==undefined&&o[e.name]!==null&&e.type!=='file')e.value=o[e.name]})}
 function gf(f){return Object.fromEntries(new FormData(f))}
 function putMedia(kind,owner,name,type,size,data){const id=uid();return putFile({id,kind,ownerId:owner,name,type,size,data,added:new Date().toISOString()}).then(()=>id)}
-async function delItem(col,id){const it=data[col].find(x=>x.id===id);if(!it||!confirm('Padam rekod ini beserta lampirannya?'))return;for(const fid of [...(it.files||[]),...(it.photos||[])])if(fid)await delFile(fid);data[col]=data[col].filter(x=>x.id!==id);save()}
+async function delItem(col,id){const it=data[col].find(x=>x.id===id);if(!it||!confirm('Padam rekod ini beserta lampirannya?'))return;for(const fid of [...(it.files||[]),...(it.photos||[])])if(fid)await delFile(fid);data[col]=data[col].filter(x=>x.id!==id);save('Rekod dipadam')}
 async function viewFile(id){const f=await getFile(id);if(!f)return alert('Fail tidak ditemui');const [h,b]=f.data.split(','),mime=(h.match(/:(.*?);/)||[])[1]||f.type||'application/octet-stream',bin=atob(b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);const url=URL.createObjectURL(new Blob([u],{type:mime}));window.open(url,'_blank');setTimeout(()=>URL.revokeObjectURL(url),60000)}
 async function imgCompress(file,max=1400,q=.82){const src=await dataURL(file);return new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const k=Math.min(1,max/Math.max(i.naturalWidth,i.naturalHeight)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(i.naturalWidth*k));c.height=Math.max(1,Math.round(i.naturalHeight*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',q))};i.onerror=()=>no(Error('Gambar tidak dapat dibaca. Gunakan format JPG atau PNG.'));i.src=src})}
 
 /* --- cetakan: orientasi halaman, tapak halaman, kepala surat --- */
 function setPageSetup(orient,label){let st=$('pgSize');if(!st){st=document.createElement('style');st.id='pgSize';document.head.appendChild(st)}st.textContent='@page{size:A4 '+(orient==='landscape'?'landscape':'portrait')+'}';if(label){let s=$('rptPageStyle');if(!s){s=document.createElement('style');s.id='rptPageStyle';document.head.appendChild(s)}s.textContent='@page{@bottom-left{content:"'+String(label).replace(/["\\\n<>]/g,' ')+'";font:9pt Arial,sans-serif;color:#66768a}}'}}
-async function printPage(orient,label,el){setPageSetup(orient,label);if(el)await Promise.all([...el.querySelectorAll('img')].map(i=>i.decode?i.decode().catch(()=>{}):0));window.print()}
+async function printPage(orient,label,el){setPageSetup(orient,label);if(!el)return window.print();await Promise.all([...el.querySelectorAll('img')].map(i=>i.decode?i.decode().catch(()=>{}):0));pvShow(orient,el)}
 function lhead(title,sub,who){const p=data.profile,a=lg('kpm'),b=lg('school');return `${(a||b)?`<div class="lgrow">${a?`<img class="lg" src="${a}" alt="Logo KPM">`:'<span></span>'}${b?`<img class="lg" src="${b}" alt="Logo Sekolah">`:'<span></span>'}</div>`:''}<div class="lh"><div class="lhl"><div class="org">${p.sekolah?esc(p.sekolah):'Portfolio Profesionalisme Guru'}</div><h1>${title}</h1>${sub?`<div class="period">${sub}</div>`:''}${who?`<div class="who"><b>${vv(p.nama)}</b><span>${[p.jawatan,p.gred].filter(Boolean).map(esc).join(' · ')||'&nbsp;'}</span></div>`:''}</div></div>`}
 function sigBlock(l,r){const one=s=>`<div class="sig"><div class="sh">${s.t}</div><div class="sl"></div>${s.n?`<b>${esc(s.n)}</b>`:'<b>Nama: ______________________</b>'}<div class="sm">${esc(s.j||'')}</div><div class="sm">Tarikh: ____________________</div></div>`;return `<div class="sigwrap"><div class="sigs two">${one(l)}${one(r)}</div></div>`}
 const footName=()=>data.profile.nama||'';
@@ -209,7 +278,7 @@ const footName=()=>data.profile.nama||'';
 /* --- LNPT --- */
 $('lnptF').onsubmit=e=>{e.preventDefault();const o=gf(e.target),m=parseFloat(o.markah);if(!(m>=0&&m<=100))return alert('Markah mesti antara 0 hingga 100');let it=data.lnpt.find(x=>String(x.tahun)===String(o.tahun));if(!it){it={id:uid()};data.lnpt.push(it)}Object.assign(it,o,{markah:m,tahun:String(o.tahun),updated:new Date().toISOString()});save();lnptReset();$('lnptMsg').textContent='Markah '+o.tahun+' disimpan.'};
 function lnptReset(){const f=$('lnptF');f.reset();f.elements.tahun.value=Math.max(2025,...data.lnpt.map(r=>+r.tahun+1||0),0)||2025}
-function lnptEdit(id){const r=data.lnpt.find(x=>x.id===id);if(!r)return;fillForm($('lnptF'),r);$('lnptF').scrollIntoView({behavior:'smooth'})}
+function lnptEdit(id){const r=data.lnpt.find(x=>x.id===id);if(!r)return;fillForm($('lnptF'),r);openDrawer('lnptF','Edit Markah LNPT')}
 const lnptSorted=()=>[...data.lnpt].sort((x,z)=>String(x.tahun).localeCompare(String(z.tahun)));
 const lnptChg=(a,i)=>{const pr=a[i-1];if(!pr)return null;return (+a[i].markah)-(+pr.markah)};
 function lnptRender(){const L=$('lnptList');if(!L)return;const a=lnptSorted(),avg=a.length?a.reduce((s,r)=>s+(+r.markah),0)/a.length:0,hi=a.length?a.reduce((b,r)=>+r.markah>+b.markah?r:b):null,last=a[a.length-1];
@@ -222,7 +291,7 @@ async function lnptPrint(){if(!data.lnpt.length)return alert('Tiada markah untuk
 /* --- PENGLIBATAN GURU --- */
 $('tugasF').onsubmit=e=>{e.preventDefault();const o=gf(e.target),id=o.id||uid();if(o.tamat&&o.tamat<o.mula)return alert('Tarikh tamat tidak boleh sebelum tarikh mula');let it=data.tugas.find(x=>x.id===id);if(!it){it={id};data.tugas.push(it)}Object.assign(it,o,{id,updated:new Date().toISOString()});save();tugasReset();$('tugasMsg').textContent='Penglibatan disimpan.'};
 function tugasReset(){const f=$('tugasF');f.reset();f.elements.id.value=''}
-function tugasEdit(id){const r=data.tugas.find(x=>x.id===id);if(!r)return;tugasReset();fillForm($('tugasF'),r);$('tugasF').elements.id.value=id;$('tugasF').scrollIntoView({behavior:'smooth'})}
+function tugasEdit(id){const r=data.tugas.find(x=>x.id===id);if(!r)return;tugasReset();fillForm($('tugasF'),r);$('tugasF').elements.id.value=id;openDrawer('tugasF','Edit Penglibatan')}
 function tugasYears(){const ys=data.tugas.map(t=>+yr(t.mula)).filter(Boolean);if(!ys.length)return[];const mx=Math.max(new Date().getFullYear(),...data.tugas.map(t=>+yr(t.tamat)).filter(Boolean)),o=[];for(let y=mx;y>=Math.min(...ys);y--)o.push(String(y));return o}
 function tugasFiltered(){const q=ql($('tugasQ').value),j=$('tugasJ').value,y=$('tugasY').value;return data.tugas.filter(t=>(!j||t.jenis===j)&&(!y||(yr(t.mula)<=y&&(!t.tamat||yr(t.tamat)>=y)))&&ql([t.jawatan,t.unit,t.skop,t.rujukan].join(' ')).includes(q)).sort((a,b)=>(b.mula||'').localeCompare(a.mula||''))}
 function tugasRender(){if(!$('tugasList'))return;setSel('tugasY',tugasYears(),'Semua tahun');const a=tugasFiltered();$('tugasList').innerHTML=a.length?`<div class="tablewrap"><table><tr><th>Jenis</th><th>Jawatan / Tugas</th><th>Unit / Organisasi</th><th>Peringkat</th><th>Tempoh</th><th>Tindakan</th></tr>${a.map(t=>`<tr><td><span class="chip ${t.jenis==='Luar Sekolah'?'warn':''}">${esc(t.jenis)}</span></td><td><b>${esc(t.jawatan)}</b>${t.skop?`<br><small class="muted">${esc(t.skop.slice(0,110))}${t.skop.length>110?'…':''}</small>`:''}</td><td>${vv(t.unit)}</td><td>${vv(t.peringkat)}</td><td>${tempoh(t)}</td><td><button class="small secondary" onclick="tugasEdit('${t.id}')">Edit</button> <button class="small" onclick="tugasPrintOne('${t.id}')">Cetak</button> <button class="small danger" onclick="delItem('tugas','${t.id}')">Padam</button></td></tr>`).join('')}</table></div>`:'<p class="muted">Tiada penglibatan.</p>'}
@@ -240,7 +309,7 @@ async function attLoad(k,it){att[k]={fid:'',name:'',rm:false};const fid=(it.file
 /* --- SURAT-MENYURAT --- */
 $('suratF').onsubmit=async e=>{e.preventDefault();const o=gf(e.target),id=o.id||uid();let it=data.surat.find(x=>x.id===id);const isNew=!it;it=it||{id,files:[]};if(o.status==='Selesai'&&!o.tarikh_selesai)o.tarikh_selesai=TODAY();Object.assign(it,o,{id,updated:new Date().toISOString()});if(!(await saveAtt('surat',it)))return;if(isNew)data.surat.push(it);save();suratReset();$('suratMsg').textContent='Surat disimpan.'};
 function suratReset(){const f=$('suratF');f.reset();f.elements.id.value='';att.surat={fid:'',name:'',rm:false};attShow('surat')}
-async function suratEdit(id){const r=data.surat.find(x=>x.id===id);if(!r)return;suratReset();fillForm($('suratF'),r);$('suratF').elements.id.value=id;await attLoad('surat',r);$('suratF').scrollIntoView({behavior:'smooth'})}
+async function suratEdit(id){const r=data.surat.find(x=>x.id===id);if(!r)return;suratReset();fillForm($('suratF'),r);$('suratF').elements.id.value=id;await attLoad('surat',r);openDrawer('suratF','Edit Surat')}
 function suratToggle(id){const r=data.surat.find(x=>x.id===id);if(!r)return;if(r.status==='Selesai'){r.status='Dalam Tindakan';r.tarikh_selesai=''}else{r.status='Selesai';r.tarikh_selesai=TODAY()}save()}
 const suratLate=r=>r.status!=='Selesai'&&r.tarikh_akhir&&r.tarikh_akhir<TODAY();
 function suratChip(r){return r.status==='Selesai'?'<span class="chip ok">Selesai</span>':suratLate(r)?'<span class="chip bad">Lewat</span>':r.status==='Dalam Tindakan'?'<span class="chip warn">Dalam Tindakan</span>':'<span class="chip">Baru</span>'}
@@ -255,7 +324,7 @@ async function suratPrintAll(){const a=suratFiltered();if(!a.length)return alert
 const SIJIL_JENIS=['Kursus / CPD','Pertandingan / Pencapaian','Penghargaan','Kelayakan Akademik / Profesional','Penyertaan / Kehadiran','Lain-lain'];
 $('sijilF').onsubmit=async e=>{e.preventDefault();const o=gf(e.target),id=o.id||uid();let it=data.sijil.find(x=>x.id===id);const isNew=!it;it=it||{id,files:[]};Object.assign(it,o,{id,jam:+o.jam||0,updated:new Date().toISOString()});if(!(await saveAtt('sijil',it)))return;if(isNew)data.sijil.push(it);save();sijilReset();$('sijilMsg').textContent='Sijil disimpan.'};
 function sijilReset(){const f=$('sijilF');f.reset();f.elements.id.value='';f.elements.jam.value=0;att.sijil={fid:'',name:'',rm:false};attShow('sijil')}
-async function sijilEdit(id){const r=data.sijil.find(x=>x.id===id);if(!r)return;sijilReset();fillForm($('sijilF'),r);$('sijilF').elements.id.value=id;await attLoad('sijil',r);$('sijilF').scrollIntoView({behavior:'smooth'})}
+async function sijilEdit(id){const r=data.sijil.find(x=>x.id===id);if(!r)return;sijilReset();fillForm($('sijilF'),r);$('sijilF').elements.id.value=id;await attLoad('sijil',r);openDrawer('sijilF','Edit Sijil')}
 function sijilFiltered(){const q=ql($('sijilQ').value),j=$('sijilJ').value,y=$('sijilY').value;return data.sijil.filter(r=>(!j||r.jenis===j)&&(!y||yr(r.tarikh)===y)&&ql([r.tajuk,r.penganjur,r.nombor,r.peringkat].join(' ')).includes(q)).sort((a,b)=>(b.tarikh||'').localeCompare(a.tarikh||''))}
 function sijilRender(){if(!$('sijilList'))return;setSel('sijilY',yearsOf('sijil',r=>yr(r.tarikh)),'Semua tahun');setSel('sijilJ',SIJIL_JENIS,'Semua jenis');const a=sijilFiltered();$('sijilList').innerHTML=a.length?`<div class="tablewrap"><table><tr><th>Tarikh</th><th>Sijil</th><th>Penganjur</th><th>Jenis / Peringkat</th><th>Jam</th><th>Imbasan</th><th>Tindakan</th></tr>${a.map(r=>`<tr><td>${date(r.tarikh)}</td><td><b>${esc(r.tajuk)}</b>${r.nombor?`<br><small class="muted">${esc(r.nombor)}</small>`:''}</td><td>${vv(r.penganjur)}</td><td>${esc(r.jenis||'')}${r.peringkat?`<br><small class="muted">${esc(r.peringkat)}</small>`:''}</td><td>${r.jam||'—'}</td><td>${(r.files||[])[0]?`<button class="small secondary" onclick="viewFile('${r.files[0]}')">Papar</button>`:'—'}</td><td><button class="small secondary" onclick="sijilEdit('${r.id}')">Edit</button> <button class="small danger" onclick="delItem('sijil','${r.id}')">Padam</button></td></tr>`).join('')}</table></div>`:'<p class="muted">Tiada sijil.</p>'}
 function sijilDocAll(a){const h=a.reduce((s,r)=>s+(+r.jam||0),0);return lhead('Senarai Sijil','Setakat '+new Date().toLocaleDateString('ms-MY'),true)+`<div class="tw"><table class="dt"><thead><tr><th style="width:5%">Bil.</th><th style="width:13%">Tarikh</th><th>Nama Sijil</th><th style="width:22%">Penganjur</th><th style="width:19%">Jenis / Peringkat</th><th style="width:7%">Jam</th></tr></thead><tbody>${a.map((r,i)=>`<tr><td class="c">${i+1}</td><td>${date(r.tarikh)}</td><td><b>${esc(r.tajuk)}</b>${r.nombor?`<div class="sm">${esc(r.nombor)}</div>`:''}</td><td>${vv(r.penganjur)}</td><td>${esc(r.jenis||'')}${r.peringkat?`<div class="sm">${esc(r.peringkat)}</div>`:''}</td><td class="c">${r.jam||'—'}</td></tr>`).join('')}<tr class="tot"><td colspan="5">Jumlah (${a.length} sijil)</td><td class="c">${h}</td></tr></tbody></table></div><div class="rfoot">Dijana ${new Date().toLocaleDateString('ms-MY')}</div>`}
@@ -270,7 +339,7 @@ function oprCount(){const t=$('oprF').elements.ringkasan.value.length;$('oprCnt'
 function oprDefaults(){const f=$('oprF'),p=data.profile;if(!f.elements.id.value){if(!f.elements.penyedia_nama.value)f.elements.penyedia_nama.value=p.nama||'';if(!f.elements.penyedia_jawatan.value)f.elements.penyedia_jawatan.value=[p.jawatan,p.gred].filter(Boolean).join(' ')}}
 function oprReset(){const f=$('oprF');f.reset();f.elements.id.value='';oprS=[{},{},{}];oprSlotsRender();oprDefaults();oprCount()}
 $('oprF').onsubmit=async e=>{e.preventDefault();const o=gf(e.target),id=o.id||uid(),n=oprS.filter(s=>s.pending||(s.fid&&!s.rm)).length;if(n<2&&!confirm('OPR biasanya memerlukan 2 hingga 3 gambar. Simpan juga?'))return;let it=data.opr.find(x=>x.id===id);const isNew=!it;it=it||{id,photos:[]};const photos=[];for(let i=0;i<3;i++){const s=oprS[i];if(s.pending){if(s.fid)await delFile(s.fid);photos.push(await putMedia('opr',id,'gambar'+(i+1)+'.jpg','image/jpeg',Math.round(s.url.length*.75),s.url))}else if(s.rm){if(s.fid)await delFile(s.fid)}else if(s.fid)photos.push(s.fid)}Object.assign(it,o,{id,photos,updated:new Date().toISOString()});if(isNew)data.opr.push(it);save();oprReset();$('oprMsg').textContent='OPR disimpan.'};
-async function oprEdit(id){const r=data.opr.find(x=>x.id===id);if(!r)return;oprReset();fillForm($('oprF'),r);$('oprF').elements.id.value=id;oprS=[{},{},{}];for(let i=0;i<(r.photos||[]).length&&i<3;i++){const f=await getFile(r.photos[i]);if(f)oprS[i]={fid:r.photos[i],url:f.data}}oprSlotsRender();oprCount();$('oprF').scrollIntoView({behavior:'smooth'})}
+async function oprEdit(id){const r=data.opr.find(x=>x.id===id);if(!r)return;oprReset();fillForm($('oprF'),r);$('oprF').elements.id.value=id;oprS=[{},{},{}];for(let i=0;i<(r.photos||[]).length&&i<3;i++){const f=await getFile(r.photos[i]);if(f)oprS[i]={fid:r.photos[i],url:f.data}}oprSlotsRender();oprCount();openDrawer('oprF','Edit OPR')}
 function oprFiltered(){const q=ql($('oprQ').value),y=$('oprY').value;return data.opr.filter(r=>(!y||yr(r.tarikh)===y)&&ql([r.tajuk,r.tempat,r.penganjur].join(' ')).includes(q)).sort((a,b)=>(b.tarikh||'').localeCompare(a.tarikh||''))}
 function oprRender(){if(!$('oprList'))return;setSel('oprY',yearsOf('opr',r=>yr(r.tarikh)),'Semua tahun');if(!$('oprSlots').children.length)oprSlotsRender();oprDefaults();const a=oprFiltered();$('oprList').innerHTML=a.length?`<div class="tablewrap"><table><tr><th>Tarikh</th><th>Program</th><th>Tempat</th><th>Peserta</th><th>Gambar</th><th>Tindakan</th></tr>${a.map(r=>`<tr><td>${date(r.tarikh)}</td><td><b>${esc(r.tajuk)}</b></td><td>${vv(r.tempat)}</td><td>${r.peserta||'—'}</td><td>${(r.photos||[]).length}</td><td><button class="small secondary" onclick="oprEdit('${r.id}')">Edit</button> <button class="small" onclick="oprPrintOne('${r.id}')">Cetak OPR</button> <button class="small danger" onclick="delItem('opr','${r.id}')">Padam</button></td></tr>`).join('')}</table></div>`:'<p class="muted">Belum ada OPR.</p>'}
 function oprHead(){const p=data.profile,a=lg('kpm'),b=lg('school');return `<div class="oprh">${a?`<img class="lg" src="${a}" alt="Logo KPM">`:'<span></span>'}<div class="oc"><div class="org">${p.sekolah?esc(p.sekolah):'Portfolio Profesionalisme Guru'}</div><h1>Laporan Satu Halaman (OPR)</h1></div>${b?`<img class="lg" src="${b}" alt="Logo Sekolah">`:'<span></span>'}</div>`}
@@ -281,6 +350,86 @@ async function oprPrintAll(){const a=oprFiltered();if(!a.length)return alert('Ti
 
 function renderNew(){lnptRender();tugasRender();suratRender();sijilRender();oprRender()}
 
+
+/* ===== UI: PANEL SISI, DASHBOARD, NAVIGASI, PRATONTON, NOTIFIKASI ===== */
+let curDrawer=null,pvEl=null,settings={};
+function loadSettings(){try{settings=JSON.parse(localStorage.getItem('epg_settings_v1'))||{}}catch{settings={}}}
+function saveSettings(){try{localStorage.setItem('epg_settings_v1',JSON.stringify(settings))}catch{}}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200)}
+const addDays=(iso,n)=>{const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const ICONS={dashboard:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',
+profil:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>',
+rekod:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+opr:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+sijil:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/>',
+tugas:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 13h18"/>',
+evidens:'<path d="M3 6h6l2 2h10v11H3z"/>',
+surat:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+lnpt:'<path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/>',
+analisis:'<path d="M5 21V10M12 21V4M19 21v-8"/>',
+laporan:'<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3"/><rect x="7" y="14" width="10" height="7"/>',
+sandaran:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
+more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'};
+const icon=n=>`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`;
+function go(id){const b=document.querySelector('nav button[data-p="'+id+'"]');if(b)b.click()}
+function closeSheet(){$('nav').classList.remove('open');$('ovl2').classList.remove('open')}
+/* [bahagian, id borang, tajuk, label butang, fungsi kosongkan] */
+const FORMS=[['rekod','rf','Rekod Profesional','+ Tambah Rekod',()=>resetForm()],['opr','oprF','OPR','+ Tambah OPR',()=>oprReset()],['sijil','sijilF','Sijil','+ Tambah Sijil',()=>sijilReset()],['tugas','tugasF','Penglibatan','+ Tambah Penglibatan',()=>tugasReset()],['surat','suratF','Surat','+ Tambah Surat',()=>suratReset()],['lnpt','lnptF','Markah LNPT','+ Tambah Markah',()=>lnptReset()]];
+const QUICK=[['rekod','+ Rekod'],['opr','+ OPR'],['surat','+ Surat'],['sijil','+ Sijil'],['tugas','+ Penglibatan'],['lnpt','+ Markah LNPT']];
+function openDrawer(form,title){const f=$(form),p=f.closest('.panel');if(curDrawer&&curDrawer!==p)closeDrawer(true);p.querySelector('.dhead h3').textContent=title;p.classList.add('open');$('ovl').classList.add('open');document.body.classList.add('nos');f.dataset.dirty='';curDrawer=p;p.scrollTop=0;if(innerWidth>800)setTimeout(()=>{const x=f.querySelector('input:not([type=hidden]):not([type=file]),textarea,select');if(x)x.focus({preventScroll:true})},260)}
+function closeDrawer(force){if(!curDrawer)return;const f=curDrawer.querySelector('form');if(!force&&f.dataset.dirty&&!confirm('Tutup tanpa menyimpan perubahan?'))return;curDrawer.classList.remove('open');$('ovl').classList.remove('open');if(!pvEl)document.body.classList.remove('nos');curDrawer=null}
+function openForm(form){const c=FORMS.find(x=>x[1]===form);if(!c)return;c[4]();openDrawer(form,'Tambah '+c[2])}
+function quickAdd(sec){const c=FORMS.find(x=>x[0]===sec);if(!c)return;go(sec);openForm(c[1])}
+
+/* --- pratonton cetakan --- */
+function pvShow(orient,el){pvEl=el;const paper=$('pvpaper'),land=orient==='landscape',mm=x=>x*96/25.4,area=mm(land?177:264);paper.className='preview rpt'+(land?' land':'');paper.style.zoom='';paper.innerHTML=el.innerHTML;$('pv').classList.remove('hidden');document.body.classList.add('nos');
+let pages,warn='';const op=[...paper.querySelectorAll('.oprpage')];
+if(op.length){pages=0;let bad=0;op.forEach(e=>{const n=Math.max(1,Math.ceil((e.offsetHeight-2)/area));pages+=n;if(n>1)bad++});if(bad)warn=bad+' OPR melebihi satu halaman. Ringkaskan teks ringkasan aktiviti.'}
+else{const cs=getComputedStyle(paper),h=paper.scrollHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);pages=Math.max(1,Math.ceil((h-2)/area))}
+$('pvinfo').textContent='· Anggaran '+pages+' halaman · A4 '+(land?'landskap':'potret');$('pvwarn').textContent=warn;
+paper.style.zoom=Math.min(1,(innerWidth-36)/mm(land?297:210));$('pvbody').scrollTop=0}
+function pvClose(){$('pv').classList.add('hidden');$('pvpaper').innerHTML='';pvEl=null;if(!curDrawer)document.body.classList.remove('nos')}
+function pvPrint(){window.print()}
+
+/* --- dashboard --- */
+function setCpdTarget(v){settings.cpdTarget=Math.max(0,parseFloat(v)||0);saveSettings();dashExtra();toast('Sasaran CPD disimpan')}
+function dashExtra(){if(!$('quick'))return;const p=data.profile,dy=$('dy').value||'all',a=data.records.filter(r=>dy==='all'||yr(r.tarikh)===dy);
+$('dgreet').textContent=p.nama?'Selamat datang, '+p.nama.split(' ')[0]:'Dashboard';
+$('quick').innerHTML=QUICK.map(q=>`<button onclick="quickAdd('${q[0]}')">${q[1]}</button>`).join('');
+/* kategori: hanya yang ada rekod */
+const cs=CATS.map(c=>[c,a.filter(r=>r.kategori===c).length]),act=cs.filter(x=>x[1]>0).sort((x,z)=>z[1]-x[1]),zero=cs.filter(x=>!x[1]).map(x=>x[0]);
+$('cats').innerHTML=(act.length?act.map(([c,n])=>`<p style="margin:10px 0 3px">${esc(c)} <b style="float:right">${n}</b></p><div class="bar"><i style="width:${100*n/a.length}%"></i></div>`).join(''):'<p class="muted">Belum ada rekod. <button class="small" onclick="quickAdd(\'rekod\')">+ Tambah rekod</button></p>')+(zero.length&&act.length?`<p class="muted" style="margin-top:14px;font-size:12px">Belum ada rekod: ${zero.map(esc).join(', ')}</p>`:'');
+/* perlu tindakan */
+const it=[],late=data.surat.filter(suratLate).length,lim=addDays(TODAY(),3),soon=data.surat.filter(r=>r.status!=='Selesai'&&r.tarikh_akhir&&r.tarikh_akhir>=TODAY()&&r.tarikh_akhir<=lim).length,
+noEv=data.records.filter(r=>!(r.files||[]).length&&!/^https?:/i.test(r.pautan||'')).length,fewPh=data.opr.filter(o=>(o.photos||[]).length<2).length,
+hasData=data.records.length+COLL.reduce((s,k)=>s+data[k].length,0)>0,lb=localStorage.getItem('epg_last_backup'),d=lb?Math.floor((Date.now()-new Date(lb))/86400000):null;
+if(late)it.push(['bad',late+' surat lewat tempoh',"go('surat')",'Lihat']);
+if(soon)it.push(['warn',soon+' surat hampir tarikh akhir (dalam 3 hari)',"go('surat')",'Lihat']);
+if(noEv)it.push(['warn',noEv+' rekod belum ada bukti (fail atau pautan)',"go('rekod')",'Semak']);
+if(fewPh)it.push(['warn',fewPh+' OPR kurang daripada 2 gambar',"go('opr')",'Semak']);
+if(hasData&&d===null)it.push(['bad','Belum pernah membuat sandaran data',"backup()",'Sandarkan']);
+else if(d!==null&&d>30)it.push(['warn','Sandaran terakhir '+d+' hari lalu',"backup()",'Sandarkan']);
+$('todo').innerHTML=it.map(x=>`<div class="todo"><span class="dot ${x[0]}"></span><span class="t">${x[1]}</span><button class="small secondary" onclick="${x[2]}">${x[3]}</button></div>`).join('')+(it.length?'':`<div class="todo"><span class="dot ok"></span><span class="t">${hasData?'Semua terkawal. Tiada tindakan segera.':'Mulakan dengan menekan + Rekod atau + OPR di atas.'}</span></div>`)+(d!==null&&d<=30?`<div class="todo"><span class="dot ok"></span><span class="t muted">Sandaran terakhir: ${d===0?'hari ini':d+' hari lalu'}</span></div>`:'');
+/* cincin CPD */
+const yy=dy!=='all'?dy:String(new Date().getFullYear()),hrs=data.records.filter(r=>yr(r.tarikh)===yy).reduce((s,r)=>s+(+r.jam||0),0),tgt=+settings.cpdTarget||0,pct=tgt?Math.min(100,Math.round(100*hrs/tgt)):0,circ=2*Math.PI*42;
+$('cpdring').innerHTML=`<div class="ringwrap"><svg viewBox="0 0 100 100" width="112" height="112"><circle cx="50" cy="50" r="42" fill="none" stroke="#e8edf2" stroke-width="10"/><circle cx="50" cy="50" r="42" fill="none" stroke="#168b87" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(pct/100*circ).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 50 50)"/><text x="50" y="49" text-anchor="middle" font-size="19" font-weight="700" fill="#172b45">${hrs}</text><text x="50" y="63" text-anchor="middle" font-size="9" fill="#718094">${tgt?'/ '+tgt+' jam':'jam'}</text></svg><div style="flex:1;min-width:150px"><div class="muted">Tahun ${yy}${tgt?' · '+pct+'% daripada sasaran':''}</div><label style="margin-top:10px">Sasaran jam CPD setahun</label><input type="number" min="0" step="0.5" value="${tgt||''}" placeholder="Tetapkan sasaran" onchange="setCpdTarget(this.value)"></div></div>`;
+/* trend LNPT */
+const L=lnptSorted();$('lnptMini').innerHTML=L.length?`<div class="mini">${L.slice(-6).map(r=>`<div class="mb"><b>${(+r.markah).toFixed(1)}</b><div class="bw"><i style="height:${Math.max(3,Math.min(100,+r.markah))}%"></i></div><span>${esc(r.tahun)}</span></div>`).join('')}</div>`:'<p class="muted">Belum ada markah. <button class="small" onclick="quickAdd(\'lnpt\')">+ Tambah markah</button></p>'}
+
+function initUI(){
+document.querySelectorAll('nav button[data-p]').forEach(b=>b.insertAdjacentHTML('afterbegin',icon(b.dataset.p)));
+document.querySelectorAll('#tabbar button').forEach(b=>{b.insertAdjacentHTML('afterbegin',icon(b.dataset.go||'more'));if(b.dataset.go)b.onclick=()=>go(b.dataset.go)});
+$('moreBtn').onclick=()=>{const o=$('nav').classList.toggle('open');$('ovl2').classList.toggle('open',o)};
+document.querySelectorAll('nav button[data-p]').forEach(b=>b.addEventListener('click',()=>{closeSheet();let hit=false;document.querySelectorAll('#tabbar [data-go]').forEach(t=>{const on=t.dataset.go===b.dataset.p;if(on)hit=true;t.classList.toggle('active',on)});$('moreBtn').classList.toggle('active',!hit);window.scrollTo(0,0)}));
+FORMS.forEach(([sec,form,title,addLabel])=>{const f=$(form),panel=f.closest('.panel'),s=$(sec);
+panel.classList.add('drawer');panel.insertAdjacentHTML('afterbegin','<div class="dhead"><h3></h3><button type="button" class="secondary small" onclick="closeDrawer()">✕ Tutup</button></div>');
+const fb=f.querySelector('button:not([type])');if(fb&&fb.parentElement.tagName==='P')fb.parentElement.classList.add('dfoot');
+f.addEventListener('input',()=>{f.dataset.dirty='1'});
+const h2=s.querySelector('h2'),sub=s.querySelector('.sub'),head=document.createElement('div'),left=document.createElement('div'),btn=document.createElement('button');
+head.className='pagehead';s.insertBefore(head,h2);left.appendChild(h2);if(sub)left.appendChild(sub);head.appendChild(left);btn.className='addbtn no-print';btn.textContent=addLabel;btn.onclick=()=>openForm(form);head.appendChild(btn)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(pvEl)pvClose();else closeDrawer()}})}
+initUI();
+
 let logos={};
 function loadLogos(){try{logos=JSON.parse(localStorage.getItem('epg_logos_v1'))||{}}catch{logos={}}}
 function saveLogos(){try{localStorage.setItem('epg_logos_v1',JSON.stringify(logos));return true}catch(e){alert('Gagal menyimpan logo: ruang storan pelayar penuh.');return false}}
@@ -290,11 +439,11 @@ async function setLogo(k,inp){let f=inp.files[0];if(!f)return;if(f.size>4*1024*1
 function clearLogo(k){if(!logos[k])return;delete logos[k];saveLogos();refresh()}
 function logoPanel(){['kpm','school'].forEach(k=>{let e=$('lb'+k);if(e)e.innerHTML=lg(k)?`<img src="${lg(k)}" alt="Logo">`:'<span class="muted">Belum ada logo</span>'})}
 function blobDownload(blob,name){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
-async function backup(){let fs=await allFiles(),o={app:'e-Portfolio Profesionalisme Guru',version:2,exportedAt:new Date().toISOString(),profile:data.profile,records:data.records,evidence:fs,logos:logos,lnpt:data.lnpt,tugas:data.tugas,surat:data.surat,sijil:data.sijil,opr:data.opr};blobDownload(new Blob([JSON.stringify(o)],{type:'application/json'}),'ePortfolio_Sandaran_'+new Date().toISOString().slice(0,10)+'.json')}
-async function restore(inp){let f=inp.files[0];if(!f)return;try{let o=JSON.parse(await f.text());if(!Array.isArray(o.records))throw Error('Fail sandaran tidak sah');let mode=$('mode').value;if(!confirm(mode==='replace'?'Gantikan semua data sedia ada?':'Gabungkan rekod sandaran?'))return;if(mode==='replace'){for(let x of await allFiles())await delFile(x.id);data={profile:o.profile||{},records:o.records}}else{if(!data.profile.nama)data.profile=o.profile||{};let ids=new Set(data.records.map(r=>r.id));o.records.forEach(r=>{if(!ids.has(r.id))data.records.push(r)})}for(let k of COLL){data[k]||=[];if(mode==='replace')data[k]=o[k]||[];else{let ids=new Set(data[k].map(r=>r.id));(o[k]||[]).forEach(r=>{if(!ids.has(r.id))data[k].push(r)})}}for(let x of o.evidence||[])await putFile(x);if(mode==='replace')logos=o.logos||{};else if(o.logos)logos={...o.logos,...logos};saveLogos();save();profileLoad();alert('Pemulihan selesai.')}catch(e){alert('Gagal pulih: '+e.message)}inp.value=''}
+async function backup(){let fs=await allFiles(),o={app:'e-Portfolio Profesionalisme Guru',version:2,exportedAt:new Date().toISOString(),profile:data.profile,records:data.records,evidence:fs,logos:logos,lnpt:data.lnpt,tugas:data.tugas,surat:data.surat,sijil:data.sijil,opr:data.opr,settings:settings};blobDownload(new Blob([JSON.stringify(o)],{type:'application/json'}),'ePortfolio_Sandaran_'+new Date().toISOString().slice(0,10)+'.json');localStorage.setItem('epg_last_backup',new Date().toISOString());dashExtra();toast('Sandaran dimuat turun')}
+async function restore(inp){let f=inp.files[0];if(!f)return;try{let o=JSON.parse(await f.text());if(!Array.isArray(o.records))throw Error('Fail sandaran tidak sah');let mode=$('mode').value;if(!confirm(mode==='replace'?'Gantikan semua data sedia ada?':'Gabungkan rekod sandaran?'))return;if(mode==='replace'){for(let x of await allFiles())await delFile(x.id);data={profile:o.profile||{},records:o.records}}else{if(!data.profile.nama)data.profile=o.profile||{};let ids=new Set(data.records.map(r=>r.id));o.records.forEach(r=>{if(!ids.has(r.id))data.records.push(r)})}for(let k of COLL){data[k]||=[];if(mode==='replace')data[k]=o[k]||[];else{let ids=new Set(data[k].map(r=>r.id));(o[k]||[]).forEach(r=>{if(!ids.has(r.id))data[k].push(r)})}}for(let x of o.evidence||[])await putFile(x);if(mode==='replace')logos=o.logos||{};else if(o.logos)logos={...o.logos,...logos};saveLogos();if(mode==='replace')settings=o.settings||{};else if(o.settings)settings={...o.settings,...settings};saveSettings();save();profileLoad();alert('Pemulihan selesai.')}catch(e){alert('Gagal pulih: '+e.message)}inp.value=''}
 function csv(){let cols=['tarikh','kategori','tajuk','penganjur','tempat','jam','peringkat','peranan','impak','catatan','pautan'],q=x=>'"'+String(x??'').replace(/"/g,'""')+'"',s=[cols.join(','),...data.records.map(r=>cols.map(c=>q(r[c])).join(','))].join('\r\n');blobDownload(new Blob(['\ufeff'+s],{type:'text/csv;charset=utf-8'}),'Rekod_Profesional_Guru.csv')}
 async function storage(){if(!$('storage'))return;let f=await allFiles();$('storage').innerHTML=`<p>${data.records.length} rekod · ${f.length} fail evidens · ${(f.reduce((s,x)=>s+(x.size||0),0)/1048576).toFixed(2)} MB digunakan</p>`}
-(async()=>{load();ensure();loadLogos();await openDB();profileLoad();refresh()})();
+(async()=>{load();ensure();loadLogos();loadSettings();await openDB();profileLoad();refresh()})();
 </script>
 <script>
 if ("serviceWorker" in navigator) {
