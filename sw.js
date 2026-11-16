@@ -1,8 +1,8 @@
 /* e-Portfolio Profesionalisme Guru — service worker
    Tukar CACHE_NAME setiap kali anda menukar fail ini atau senarai fail di bawah. */
-const CACHE_NAME = "eportfolio-guru-pwa-v3";
+const CACHE_NAME = "eportfolio-guru-pwa-v4";
 const CORE = ["./", "./index.html", "./manifest.webmanifest"];
-const OPTIONAL = ["./icons/guru-192.png", "./icons/guru-512.png", "./icons/guru-maskable-512.png"];
+const OPTIONAL = ["./guru-192.png", "./guru-512.png", "./guru-maskable-512.png"];
 const NAV_TIMEOUT = 4000; // ms: jika rangkaian lambat, guna salinan cache
 
 self.addEventListener("install", event => {
