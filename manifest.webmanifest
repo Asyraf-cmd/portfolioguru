@@ -16,19 +16,19 @@
   ],
   "icons": [
     {
-      "src": "./icons/guru-192.png",
+      "src": "./guru-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./icons/guru-512.png",
+      "src": "./guru-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./icons/guru-maskable-512.png",
+      "src": "./guru-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
